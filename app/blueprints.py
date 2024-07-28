@@ -7,5 +7,5 @@ def index():
     return render_template('index.html')
 
 @main.route('/hello')
-def index():
+def hello():
     return "hello"
