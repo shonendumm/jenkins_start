@@ -2,14 +2,21 @@ from flask import Flask, render_template
 from flask_caching import Cache
 from .blueprints import main
 
+cache = Cache()
 
-app = Flask(__name__)
+def create_app():
+    app = Flask(__name__)
 
-app.register_blueprint(main)
 
-app.config['CACHE_TYPE'] = 'FileSystemCache'
-app.config['CACHE_DIR'] = 'cache'
-cache = Cache(app)
+    app.config['CACHE_TYPE'] = 'FileSystemCache'
+    app.config['CACHE_DIR'] = 'cache'
+    cache.init_app(app)
+    # app.extensions['cache'] = cache # this is not needed, will cause errors.
+
+    app.register_blueprint(main)
+    return app
+
+app = create_app()
 
 
 
