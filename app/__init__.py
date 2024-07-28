@@ -18,6 +18,9 @@ def create_app():
 
 app = create_app()
 
+@app.route('/extra')
+def extra():
+    return "this is an extra route"
 
 
 
