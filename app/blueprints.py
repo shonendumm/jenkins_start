@@ -6,6 +6,14 @@ main = Blueprint('main', __name__)
 def index():
     return render_template('index.html')
 
-@main.route('/hello')
-def hello():
-    return "hello"
+@main.route('/add/<request>')
+def add(request):
+    from app import cache
+    cache.set("value", request)
+    return f"value added: {request}"
+
+@main.route('/get')
+def getvalue():
+    from app import cache
+    value = cache.get("value")
+    return f"hello, value is {value}"
