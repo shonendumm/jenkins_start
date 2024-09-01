@@ -9,7 +9,7 @@ pipeline {
             steps {
                 echo "Building the project.."
                 echo "building version: ${NEW_VERSION}" // need double quotes for string interpolation
-                echo "CSRF_CREDENTIALS: ${CSRF_CREDENTIALS}"
+                // echo "CSRF_CREDENTIALS: ${CSRF_CREDENTIALS}"
             }
         }
 
