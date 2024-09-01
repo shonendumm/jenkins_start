@@ -16,7 +16,7 @@ pipeline {
         stage("test") {
             when {
                 expression {
-                    BRANCH_NAME == "master" || BRANCH_NAME == "develop" // or env.BRANCH_NAME == "master" , env variable available
+                    env.BRANCH_NAME == "master" || env.BRANCH_NAME == "develop" // or env.BRANCH_NAME == "master" , env variable available
                 }
             }
             steps {
