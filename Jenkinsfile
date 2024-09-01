@@ -10,6 +10,11 @@ pipeline {
         }
 
         stage("test") {
+            when {
+                expression {
+                    BRANCH_NAME == "master" || BRANCH_NAME == "dev" // or env.BRANCH_NAME == "master" , env variable available
+                }
+            }
             steps {
                 echo "Testing the project.."
             }
