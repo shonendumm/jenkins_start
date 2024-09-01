@@ -16,19 +16,19 @@ pipeline {
         stage("test") {
             when {
                 expression {
-                    env.BRANCH_NAME == "master" || env.BRANCH_NAME == "develop" // or env.BRANCH_NAME == "master" , env variable available
+                    env.BRANCH_NAME == "main" || env.BRANCH_NAME == "develop" // or env.BRANCH_NAME == "master" , env variable available
                 }
             }
             steps {
                 echo "Testing the project.."
             }
-        }   
+        }    
 
         stage("deploy") {
             steps {
                 echo "Deploying the project.."
                 withCredentials([
-                    usernamePassword(credentials: 'server-credentials', usernameVariable: USER)
+                    usernamePassword(credentialsId: 'server-credentials', usernameVariable: USER)
                 ]) {
                     // echo "Deploying with user: ${USER} and password: ${PASSWORD}"
                     echo "Deploying with user: ${USER}"
