@@ -16,7 +16,7 @@ pipeline {
         stage("test") {
             when {
                 expression {
-                    BRANCH_NAME == "master" || BRANCH_NAME == "dev" // or env.BRANCH_NAME == "master" , env variable available
+                    BRANCH_NAME == "master" || BRANCH_NAME == "develop" // or env.BRANCH_NAME == "master" , env variable available
                 }
             }
             steps {
@@ -28,7 +28,7 @@ pipeline {
             steps {
                 echo "Deploying the project.."
                 withCredentials([
-                    usernamePassword(credentials: 'server-credentials', usernameVariable: USER, passwordVariable: PASSWORD)
+                    usernamePassword(credentials: 'server-credentials', usernameVariable: USER)
                 ]) {
                     // echo "Deploying with user: ${USER} and password: ${PASSWORD}"
                     echo "Deploying with user: ${USER}"
